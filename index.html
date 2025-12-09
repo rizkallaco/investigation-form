@@ -1,172 +1,205 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Collection Form</title>
-      <style>
-                * { box-sizing: border-box; margin: 0; padding: 0; }
-                body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #1e3a5f; min-height: 100vh; padding: 20px; }
-                .header { text-align: center; padding: 30px 0; }
-                .logo { font-size: 48px; font-weight: bold; color: #ffd700; font-family: 'Arial Black', sans-serif; }
-                .form-title { color: white; font-size: 32px; margin-top: 15px; }
-                .form-container { max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; padding: 40px; }
-                .form-group { margin-bottom: 25px; }
-                label { display: block; margin-bottom: 8px; font-size: 16px; color: #333; }
-                .required { color: #dc3545; margin-right: 5px; }
-                input[type="text"], select { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
-                input[type="text"]:focus, select:focus { outline: none; border-color: #1e3a5f; }
-                .submit-btn { background-color: #a8c5da; color: #333; border: none; padding: 15px 40px; font-size: 16px; border-radius: 6px; cursor: pointer; }
-                .submit-btn:hover { background-color: #8fb5ce; }
-                .submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
-                .location-status { font-size: 12px; color: #666; margin-top: 5px; }
-                .location-status.success { color: #28a745; }
-                .location-status.error { color: #dc3545; }
-            </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج التحصيل</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #1e3a5f; min-height: 100vh; padding: 20px; }
+      .header { text-align: center; padding: 30px 0; }
+      .logo { font-size: 48px; font-weight: bold; color: #ffd700; font-family: 'Arial Black', sans-serif; }
+      .form-title { color: white; font-size: 32px; margin-top: 15px; }
+      .form-container { max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; padding: 40px; }
+      .form-group { margin-bottom: 25px; }
+      label { display: block; margin-bottom: 8px; font-size: 16px; color: #333; }
+      .required { color: #dc3545; margin-right: 5px; }
+      input[type="text"], select { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
+      input[type="text"]:focus, select:focus { outline: none; border-color: #1e3a5f; }
+      .submit-btn { background-color: #a8c5da; color: #333; border: none; padding: 15px 40px; font-size: 16px; border-radius: 6px; cursor: pointer; }
+      .submit-btn:hover { background-color: #8fb5ce; }
+      .submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
+      .location-status { font-size: 12px; color: #666; margin-top: 5px; }
+      .location-status.success { color: #28a745; }
+      .location-status.error { color: #dc3545; }
+    </style>
   </head>
   <body>
-        <div class="header">
-                  <div class="logo">Rizkalla</div>div>
-                  <h1 class="form-title">Collection Form</h1>h1>
-        </div>div>
-        <div class="form-container">
-                  <form id="collectionForm">
-                                <div class="form-group">
-                                                  <label>Visit Type <span class="required">*</span>span></label>
-                                                <select name="visitType" required>
-                                                                    <option value="">Select...</option>option>
-                                                                    <option value="Buyer">Buyer</option>option>
-                                                                    <option value="Guarantor">Guarantor</option>option>
-                                                                    <option value="Father">Father</option>option>
-                                                                    <option value="Mother">Mother</option>option>
-                                                                    <option value="Husband">Husband</option>option>
-                                                                    <option value="Wife">Wife</option>option>
-                                                                    <option value="Brother">Brother</option>option>
-                                                                    <option value="Sister">Sister</option>option>
-                                                                    <option value="Relative">Relative</option>option>
-                                                </select>select>
-                                </div>div>
-                              <div class="form-group">
-                                              <label>Collector Name <span class="required">*</span>span></label>
-                                              <select name="collectorName" required>
-                                                                  <option value="">Select...</option>option>
-                                                                  <option value="Abanob Safwat">Abanob Safwat</option>option>
-                                                                  <option value="Islam Abdelsattar">Islam Abdelsattar</option>option>
-                                                                  <option value="Angelo Bahgat">Angelo Bahgat</option>option>
-                                                                  <option value="Anas Mahmoud">Anas Mahmoud</option>option>
-                                                                  <option value="Bishoy Obeid">Bishoy Obeid</option>option>
-                                                                  <option value="Tamer Emile">Tamer Emile</option>option>
-                                                                  <option value="Mohamed Shawky">Mohamed Shawky</option>option>
-                                                                  <option value="Mohamed Alaa">Mohamed Alaa</option>option>
-                                              </select>select>
-                              </div>div>
-                              <div class="form-group">
-                                              <label>Card Number <span class="required">*</span>span></label>
-                                              <input type="text" name="cardNumber" required placeholder="Enter card number">
-                              </div>div>
-                              <div class="form-group">
-                                              <label>Status <span class="required">*</span>span></label>
-                                              <select name="status" required>
-                                                                  <option value="">Select...</option>option>
-                                                                  <option value="Temporary">Temporary</option>option>
-                                                                  <option value="Successful">Successful</option>option>
-                                                                  <option value="Failed">Failed</option>option>
-                                                                  <option value="Regular Client">Regular Client</option>option>
-                                                                  <option value="Struggling Client">Struggling Client</option>option>
-                                              </select>select>
-                              </div>div>
-                              <div class="form-group">
-                                              <label>Comment <span class="required">*</span>span></label>
-                                              <input type="text" name="comment" required>
-                              </div>div>
-                              <div class="form-group">
-                                              <label>Address <span class="required">*</span>span></label>
-                                              <input type="text" name="address" required>
-                              </div>div>
-                              <div class="form-group">
-                                              <label>Location</label>
-                                              <input type="text" name="location" id="locationField" readonly placeholder="Getting location...">
-                                              <div id="locationStatus" class="location-status"></div>div>
-                              </div>div>
-                              <button type="submit" class="submit-btn" id="submitBtn">Submit</button>button>
-                  </form>form>
-        </div>div>
-      <script>
-                // Get location on page load
-                window.onload = function() {
-                              getLocation();
-                };
+    <div class="header">
+      <div class="logo">Rizkalla</div>
+      <h1 class="form-title">نموذج التحصيل</h1>
+    </div>
 
-                function getLocation() {
-                              var statusEl = document.getElementById('locationStatus');
-                              var locationField = document.getElementById('locationField');
+    <div class="form-container">
+      <form id="collectionForm">
+        <div class="form-group">
+          <label>
+            <span class="required">*</span>
+            نوع الزيارة
+          </label>
+          <select name="visitType" required>
+            <option value="">اختر...</option>
+            <option value="Buyer">العميل (المشتري)</option>
+            <option value="Guarantor">الضامن</option>
+            <option value="Father">الأب</option>
+            <option value="Mother">الأم</option>
+            <option value="Husband">الزوج</option>
+            <option value="Wife">الزوجة</option>
+            <option value="Brother">الأخ</option>
+            <option value="Sister">الأخت</option>
+            <option value="Relative">قريب</option>
+          </select>
+        </div>
 
-                              if (!navigator.geolocation) {
-                                                statusEl.textContent = 'Geolocation not supported';
-                                                statusEl.className = 'location-status error';
-                                                locationField.placeholder = 'Enter manually';
-                                                locationField.removeAttribute('readonly');
-                                                return;
-                              }
+        <div class="form-group">
+          <label>
+            <span class="required">*</span>
+            اسم المحصل
+          </label>
+          <select name="collectorName" required>
+            <option value="">اختر...</option>
+            <option value="Abanob Safwat">Abanob Safwat</option>
+            <option value="Islam Abdelsattar">Islam Abdelsattar</option>
+            <option value="Angelo Bahgat">Angelo Bahgat</option>
+            <option value="Anas Mahmoud">Anas Mahmoud</option>
+            <option value="Bishoy Obeid">Bishoy Obeid</option>
+            <option value="Tamer Emile">Tamer Emile</option>
+            <option value="Mohamed Shawky">Mohamed Shawky</option>
+            <option value="Mohamed Alaa">Mohamed Alaa</option>
+          </select>
+        </div>
 
-                              statusEl.textContent = 'Getting location...';
+        <div class="form-group">
+          <label>
+            <span class="required">*</span>
+            رقم الكارت
+          </label>
+          <input type="text" name="cardNumber" required placeholder="أدخل رقم الكارت">
+        </div>
 
-                              navigator.geolocation.getCurrentPosition(
-                                                function(position) {
-                                                                      var lat = position.coords.latitude;
-                                                                      var lng = position.coords.longitude;
-                                                                      locationField.value = lng + ',' + lat;
-                                                                      statusEl.textContent = 'Location obtained';
-                                                                      statusEl.className = 'location-status success';
-                                                },
-                                                function(error) {
-                                                                      statusEl.textContent = 'Could not get location - enter manually';
-                                                                      statusEl.className = 'location-status error';
-                                                                      locationField.placeholder = 'Enter location manually';
-                                                                      locationField.removeAttribute('readonly');
-                                                },
-                                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-                                            );
-                }
+        <div class="form-group">
+          <label>
+            <span class="required">*</span>
+            الحالة
+          </label>
+          <select name="status" required>
+            <option value="">اختر...</option>
+            <option value="Temporary">مؤقت</option>
+            <option value="Successful">ناجح</option>
+            <option value="Failed">غير ناجح</option>
+            <option value="Regular Client">عميل منتظم</option>
+            <option value="Struggling Client">عميل متعثر</option>
+          </select>
+        </div>
 
-                document.getElementById('collectionForm').onsubmit = function(e) {
-                              e.preventDefault();
-                              var submitBtn = document.getElementById('submitBtn');
-                              submitBtn.disabled = true;
-                              submitBtn.textContent = 'Sending...';
+        <div class="form-group">
+          <label>
+            <span class="required">*</span>
+            ملاحظة
+          </label>
+          <input type="text" name="comment" required placeholder="أضف ملاحظة عن الزيارة">
+        </div>
 
-                              var formData = {
-                                                visitType: document.querySelector('[name="visitType"]').value,
-                                                collectorName: document.querySelector('[name="collectorName"]').value,
-                                                cardNumber: document.querySelector('[name="cardNumber"]').value,
-                                                status: document.querySelector('[name="status"]').value,
-                                                comment: document.querySelector('[name="comment"]').value,
-                                                address: document.querySelector('[name="address"]').value,
-                                                location: document.getElementById('locationField').value
-                              };
+        <div class="form-group">
+          <label>
+            <span class="required">*</span>
+            العنوان
+          </label>
+          <input type="text" name="address" required placeholder="أدخل العنوان">
+        </div>
 
-                              fetch('https://hook.eu2.make.com/ivk1bwoats0be8t6hufl2u7259a0z', {
-                                                method: 'POST',
-                                                headers: { 'Content-Type': 'application/json' },
-                                                body: JSON.stringify(formData)
-                              })
-                              .then(function(response) {
-                                                if (response.ok) {
-                                                                      alert('Form submitted successfully!');
-                                                                      document.getElementById('collectionForm').reset();
-                                                                      getLocation();
-                                                } else {
-                                                                      alert('Error submitting form');
-                                                }
-                              })
-                              .catch(function(error) {
-                                                alert('Error: ' + error.message);
-                              })
-                              .finally(function() {
-                                                submitBtn.disabled = false;
-                                                submitBtn.textContent = 'Submit';
-                              });
-                };
-      </script>
+        <div class="form-group">
+          <label>الموقع</label>
+          <input
+            type="text"
+            name="location"
+            id="locationField"
+            readonly
+            placeholder="جارٍ الحصول على الموقع..."
+          >
+          <div id="locationStatus" class="location-status"></div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">إرسال</button>
+      </form>
+    </div>
+
+    <script>
+      // الحصول على الموقع عند تحميل الصفحة
+      window.onload = function() {
+        getLocation();
+      };
+
+      function getLocation() {
+        var statusEl = document.getElementById('locationStatus');
+        var locationField = document.getElementById('locationField');
+
+        if (!navigator.geolocation) {
+          statusEl.textContent = 'المتصفح لا يدعم تحديد الموقع الجغرافي';
+          statusEl.className = 'location-status error';
+          locationField.placeholder = 'أدخل الموقع يدويًا';
+          locationField.removeAttribute('readonly');
+          return;
+        }
+
+        statusEl.textContent = 'جارٍ الحصول على الموقع...';
+
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            locationField.value = lng + ',' + lat;
+            statusEl.textContent = 'تم الحصول على الموقع';
+            statusEl.className = 'location-status success';
+          },
+          function(error) {
+            statusEl.textContent = 'تعذّر الحصول على الموقع - يرجى إدخال الموقع يدويًا';
+            statusEl.className = 'location-status error';
+            locationField.placeholder = 'أدخل الموقع يدويًا';
+            locationField.removeAttribute('readonly');
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+      }
+
+      document.getElementById('collectionForm').onsubmit = function(e) {
+        e.preventDefault();
+        var submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'جارٍ الإرسال...';
+
+        var formData = {
+          visitType: document.querySelector('[name="visitType"]').value,
+          collectorName: document.querySelector('[name="collectorName"]').value,
+          cardNumber: document.querySelector('[name="cardNumber"]').value,
+          status: document.querySelector('[name="status"]').value,
+          comment: document.querySelector('[name="comment"]').value,
+          address: document.querySelector('[name="address"]').value,
+          location: document.getElementById('locationField').value
+        };
+
+        fetch('https://hook.eu2.make.com/ivk1bwoats0be8t6hufl2u7259a0z', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        })
+        .then(function(response) {
+          if (response.ok) {
+            alert('تم إرسال النموذج بنجاح!');
+            document.getElementById('collectionForm').reset();
+            getLocation();
+          } else {
+            alert('حدث خطأ أثناء إرسال النموذج');
+          }
+        })
+        .catch(function(error) {
+          alert('خطأ: ' + error.message);
+        })
+        .finally(function() {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'إرسال';
+        });
+      };
+    </script>
   </body>
 </html>
