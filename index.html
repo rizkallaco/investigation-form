@@ -108,19 +108,11 @@
           <input type="text" name="address" required placeholder="أدخل العنوان">
         </div>
 
-        <div class="form-group">
-          <label>الموقع</label>
-          <input
-            type="text"
-            name="location"
-            id="locationField"
-            readonly
-            placeholder="جارٍ الحصول على الموقع..."
-          >
-          <div id="locationStatus" class="location-status"></div>
-        </div>
+        <input type="hidden" name="location" id="locationField">
 
-        <button type="submit" class="submit-btn" id="submitBtn">إرسال</button>
+        <div id="locationStatus" class="location-status" role="status" aria-live="polite"></div>
+
+        <button type="submit" class="submit-btn" id="submitBtn" disabled>إرسال</button>
       </form>
     </div>
 
@@ -133,16 +125,19 @@
       function getLocation() {
         var statusEl = document.getElementById('locationStatus');
         var locationField = document.getElementById('locationField');
+        var submitBtn = document.getElementById('submitBtn');
+
+        locationField.value = '';
+        submitBtn.disabled = true;
 
         if (!navigator.geolocation) {
-          statusEl.textContent = 'المتصفح لا يدعم تحديد الموقع الجغرافي';
+          statusEl.textContent = 'المتصفح لا يدعم تحديد الموقع الجغرافي - لا يمكن إرسال النموذج';
           statusEl.className = 'location-status error';
-          locationField.placeholder = 'أدخل الموقع يدويًا';
-          locationField.removeAttribute('readonly');
           return;
         }
 
         statusEl.textContent = 'جارٍ الحصول على الموقع...';
+        statusEl.className = 'location-status';
 
         navigator.geolocation.getCurrentPosition(
           function(position) {
@@ -151,12 +146,11 @@
             locationField.value = lng + ',' + lat;
             statusEl.textContent = 'تم الحصول على الموقع';
             statusEl.className = 'location-status success';
+            submitBtn.disabled = false;
           },
           function(error) {
-            statusEl.textContent = 'تعذّر الحصول على الموقع - يرجى إدخال الموقع يدويًا';
+            statusEl.textContent = 'تعذّر الحصول على الموقع - يرجى تفعيل إذن الموقع وإعادة المحاولة';
             statusEl.className = 'location-status error';
-            locationField.placeholder = 'أدخل الموقع يدويًا';
-            locationField.removeAttribute('readonly');
           },
           { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
         );
@@ -165,6 +159,13 @@
       document.getElementById('collectionForm').onsubmit = function(e) {
         e.preventDefault();
         var submitBtn = document.getElementById('submitBtn');
+        var locationValue = document.getElementById('locationField').value;
+
+        if (!locationValue) {
+          alert('تعذّر الحصول على الموقع - لا يمكن إرسال النموذج');
+          return;
+        }
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'جارٍ الإرسال...';
 
@@ -175,7 +176,7 @@
           status: document.querySelector('[name="status"]').value,
           comment: document.querySelector('[name="comment"]').value,
           address: document.querySelector('[name="address"]').value,
-          location: document.getElementById('locationField').value
+          location: locationValue
         };
 
         fetch('https://hook.eu2.make.com/ivk1bwoats0be8t6hufl2u7259a0z4dp', {
