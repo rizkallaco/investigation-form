@@ -6,10 +6,9 @@ collections field agents to log customer/guarantor visits. The entire app is one
 
 ## What it captures / where it goes
 
-Form fields (all required): visit type (Buyer/Guarantor/Father/…), collector name
-(fixed dropdown of 8 agents), **card number — exactly 14 digits** (numeric-only input
-enforced in JS), status (Temporary/Successful/Failed/Regular Client/Struggling Client),
-comment, address.
+Form fields: visit type, collector name, **card number — exactly 14 digits**, status,
+comment and address are required. Promised payment date is optional and uses a date-only
+input.
 
 On submit it POSTs JSON to the Firebase Cloud Function:
 
@@ -17,8 +16,8 @@ On submit it POSTs JSON to the Firebase Cloud Function:
 https://us-central1-rizpay-abb7d.cloudfunctions.net/collectionTicketSubmit
 ```
 
-(project `rizpay-abb7d`; the function's source lives elsewhere, not in this repo).
-It originally submitted to a Make.com webhook and was migrated to this function.
+(project `rizpay-abb7d`; the function source lives in the sibling
+`customer-installments-portal` repository).
 
 ## Geolocation is enforced
 
@@ -34,16 +33,14 @@ It originally submitted to a Make.com webhook and was migrated to this function.
 
 - Local test: just open `index.html` (geolocation works on `file://`/localhost in most
   browsers) or serve statically.
-- Production: static hosting — the exact serving location is not recorded in this repo;
-  document it here once confirmed (candidates: Firebase Hosting on rizpay-abb7d).
+- Production: GitHub Pages at `https://rizkallaco.github.io/investigation-form/`.
 
 No env vars, no secrets, no credentials anywhere in this project.
 
 ## Git — own repo, do not use the parent workspace
 
-This folder is its **own GitHub repo**: `https://github.com/rizkallaco/investigation-form.git`
-(only tracked file: `index.html`). Commit/push here directly — never through any parent
-workspace repo.
+This folder is its **own GitHub repo**: `https://github.com/rizkallaco/investigation-form.git`.
+Commit here directly, never through any parent workspace repo.
 
 ## Gotchas
 
@@ -53,7 +50,7 @@ workspace repo.
 - Collector names are hardcoded in the dropdown — staff changes require editing
   `index.html` and redeploying.
 - Backend contract: JSON body keys `visitType`, `collectorName`, `cardNumber`,
-  `status`, `comment`, `address`, `location` — keep in sync with
+  `status`, `promisedDate`, `comment`, `address`, `location` — keep in sync with
   `collectionTicketSubmit`.
 
 ## Sibling projects (new names)

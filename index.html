@@ -14,8 +14,8 @@
       .form-group { margin-bottom: 25px; }
       label { display: block; margin-bottom: 8px; font-size: 16px; color: #333; }
       .required { color: #dc3545; margin-right: 5px; }
-      input[type="text"], select { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
-      input[type="text"]:focus, select:focus { outline: none; border-color: #1e3a5f; }
+      input[type="text"], input[type="date"], select { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
+      input[type="text"]:focus, input[type="date"]:focus, select:focus { outline: none; border-color: #1e3a5f; }
       .submit-btn { background-color: #a8c5da; color: #333; border: none; padding: 15px 40px; font-size: 16px; border-radius: 6px; cursor: pointer; }
       .submit-btn:hover { background-color: #8fb5ce; }
       .submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
@@ -146,6 +146,11 @@
         </div>
 
         <div class="form-group">
+          <label>تاريخ الوعد بالسداد</label>
+          <input type="date" name="promisedDate">
+        </div>
+
+        <div class="form-group">
           <label>
             <span class="required">*</span>
             ملاحظة
@@ -237,6 +242,7 @@
           collectorName: document.querySelector('[name="collectorName"]').value,
           cardNumber: document.querySelector('[name="cardNumber"]').value,
           status: document.querySelector('[name="status"]').value,
+          promisedDate: document.querySelector('[name="promisedDate"]').value,
           comment: document.querySelector('[name="comment"]').value,
           address: document.querySelector('[name="address"]').value,
           location: locationValue
